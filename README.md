@@ -1,0 +1,3 @@
+This is a Django Shop done properly...
+
+I hope. LOL
