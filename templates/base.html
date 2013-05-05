@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}css/shopping.css" />
+		<title>{% block pageTitle %}{% endblock %}</title>
+	</head>
+	<body>
+		<div id="page">
+			{% include 'header.html' %}
+			<div id="main">
+				{% block mainContent %}
+					
+				{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>

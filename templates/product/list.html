@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block mainContent %}
+<nav id="product-list">
+	<ul>
+	{% for prod in list %}
+		<li>{{prod}}</li>
+	{% endfor %}
+	</ul>
+</nav>
+{% endblock %}

@@ -12,10 +12,14 @@ class ByParentFilter(SimpleListFilter):
         qs = model_admin.queryset(request)
         if qs.filter(parent__isnull=True).exists():
             yield ('show_parent_only', _('List Parent Categories Only'))
+        if qs.filter(parent__isnull=False).exists():
+            yield ('children', _('List Child Categories Only'))
     
     def queryset(self, request, queryset):
         if self.value() == 'show_parent_only':
             return queryset.filter(parent__isnull=True)
+        if self.value() == 'children':
+            return queryset.filter(parent__isnull=False)
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'parent',)

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block mainContent %}
+	<nav id="category-list">
+	{% if list %}
+		<ul>
+		{% for cat in list %}
+			{% ifchanged cat.parent %}
+			<li class="parent"><h2>{{cat.parent.name}}</h2></li>
+			{% endifchanged %}
+			{% if not cat.parent %}
+			<h2>{{cat.name}}</h2>
+			{% else %}
+			<li class="child">
+				<a href="{% url view_product_list cat.parent|lower|slugify cat|lower|slugify %}" title="view products in {{cat}}">{{cat}}</a>
+			</li>
+			{% endif %}
+		{% endfor %}
+		</ul>
+	{% endif %}
+	</nav>
+{% endblock %}
