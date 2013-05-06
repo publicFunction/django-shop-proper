@@ -1,10 +1,14 @@
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 
-class Category(models.Model):
+class Category(MPTTModel):
     name = models.CharField(max_length=250)
-    parent = models.ForeignKey('self', blank=True, null=True)
+    parent = TreeForeignKey('self', blank=True, null=True, related_name='children')
     published = models.BooleanField(default=True)
     
+    class MPTTMeta:
+        order_by_insertion = ['name']
+        
     def __unicode__(self):
         return self.name
     
@@ -12,3 +16,5 @@ class Category(models.Model):
         ordering = ['parent__name']
         verbose_name="Category"
         verbose_name_plural="Categories"
+        
+    

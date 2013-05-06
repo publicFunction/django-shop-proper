@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 {% block mainContent %}
+
 <nav id="product-list">
 	<ul>
 	{% for prod in list %}
-		<li>{{prod}}</li>
+		<li>
+			<div class="product">
+				<h3>{{prod.name}}</h3>
+				<div class="price">Price: {{prod.price}}</div>
+				<div class="cat">Categogy: {{prod.category}}</div>
+			</div>
+			
+		</li>
 	{% endfor %}
 	</ul>
 </nav>

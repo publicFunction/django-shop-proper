@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+class ShopSettings(models.Model):
+    currency_option = models.ForeignKey()
+    
+
+
+class CurrencyOption(models.Model):
+    pass

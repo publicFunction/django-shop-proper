@@ -18,11 +18,12 @@ def view_category(request, category):
         cat = '%s %s' % (cat[0], cat[1])
         print cat
     else:
-        cat = category    
+        cat = category
+
     list = Category.objects.filter(parent__name__icontains=cat)
     if not list:
         list = Category.objects.filter(name__icontains=cat)
-        
+    
     return render_to_response('category/list.html', 
                               { 'list' : list},
                               RequestContext(request))
@@ -32,12 +33,31 @@ def view_product_list(request, category, sub_category):
     if "-" in sub_category:
         cat = sub_category.split('-')
         cat = '%s %s' % (cat[0], cat[1])
-        print cat
+    else:
+        cat = sub_category
+    
+    products = Product.objects.filter(category__name__icontains=cat)
     
     return render_to_response('product/list.html', 
-                              { 'list' : list },
+                              { 'list' : products },
                               RequestContext(request))
 
-def createMenu():
-    parents = Category.objects.filter(parent__isnull=True, published=True)
-    return parents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

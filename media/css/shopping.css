@@ -24,16 +24,11 @@ nav#main-nav {
 	width: 100%;
 }
 
-/*nav#main-nav ul {
-	list-style: none;
-	padding: 0px;
-	margin: 0px;
-}*/
-
 nav#main-nav ul li {
 	display: inline-block;
 	padding: 5px 10px 5px 10px;
 	text-align: center;
+	position: relative;
 }
 
 nav#main-nav ul li a {
@@ -48,6 +43,27 @@ nav#main-nav ul li a:hover {
 
 nav#category-list {
 	
+}
+
+nav#main-nav ul li ul.children {
+	display: none;
+	position: absolute;
+	left: 10px;
+	top: 25px;
+	background: #FFF;
+}
+
+nav#main-nav ul li:hover > ul {
+	display: block;
+} 
+
+nav#main-nav ul li > ul li {
+	display: block;
+	clear: both;
+	max-width: 200px;
+	width: 100%;
+	min-width: 1250px;
+	text-align: left;
 }
 
 /*nav#category-list ul {
