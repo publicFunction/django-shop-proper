@@ -24,5 +24,6 @@ class ByParentFilter(SimpleListFilter):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'parent',)
     list_filter = (ByParentFilter,)
+    exclude = ['slug',]
 
 admin.site.register(Category, CategoryAdmin)
